@@ -1,0 +1,23 @@
+# Dipendenze Node.js
+node_modules/
+
+# File di build di Vite/React
+dist/
+build/
+
+# Variabili d'ambiente (spesso contengono chiavi sensibili)
+.env
+.env.local
+.env.*.local
+
+# File di cache/log/temporanei
+*.log
+.DS_Store # macOS
+Thumbs.db # Windows
+
+# IDE e editor (es. VS Code)
+.vscode/ # Ignora la cartella di configurazione di VS Code (se non vuoi condividerla)
+.idea/   # IntelliJ / WebStorm
+
+# File specifici di Vite
+.vite/

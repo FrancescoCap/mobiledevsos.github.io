@@ -3,41 +3,38 @@
 name: Deploy to GitHub Pages
 
 on:
-  # Lancia il workflow ogni volta che c'è un push sul branch 'trunk'
   push:
     branches:
-      - trunk # O 'master' se il tuo branch principale si chiama così
+      - trunk # O 'trunk' se il tuo branch principale si chiama così
 
-  # Permetti di lanciare il workflow manualmente dalla UI di GitHub Actions
   workflow_dispatch:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest # Eseguiamo il job su un ambiente Linux pulito
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code # Clona il tuo repository
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js # Configura Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20' # Specifica la versione di Node.js che usi localmente (o una versione stabile)
-          cache: 'npm' # Abilita il caching delle dipendenze per velocizzare le build
+          node-version: '20'
+          cache: 'npm'
 
-      - name: Install Dependencies # Installa le dipendenze del progetto
+      - name: Install Dependencies
         run: npm install
 
-      - name: Build Project # Costruisce l'applicazione React/Vite in produzione
+      - name: Build Project
         run: npm run build
 
-      - name: Deploy to GitHub Pages # Deplora il contenuto della cartella 'dist'
-        uses: peaceiris/actions-gh-pages@v3 # Un'azione popolare per il deploy su gh-pages
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }} # Token fornito automaticamente da GitHub
-          publish_dir: ./dist # La cartella da pubblicare (generata da 'npm run build')
-          publish_branch: gh-pages # Il branch su cui pubblicare i file del sito
-          # Se preferisci pubblicare direttamente sul branch 'trunk' e servirlo da lì,
-          # imposta publish_branch: trunk e configura GitHub Pages per servire da 'trunk'
-          # ATTENZIONE: Se pubblichi su 'trunk', i file sorgente non saranno visibili
-          # nel repository, solo i file della build.
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          # NUOVO: Forza una nuova storia per il branch di deploy, utile per risolvere conflitti
+          # o problemi di stato con il branch gh-pages.
+          force_orphan: true

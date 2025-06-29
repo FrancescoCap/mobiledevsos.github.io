@@ -1,23 +1,26 @@
-# Dipendenze Node.js
-node_modules/
+# Dependencies
+/node_modules
 
-# File di build di Vite/React
-dist/
-build/
+# Build output
+/dist
+/build
 
-# Variabili d'ambiente (spesso contengono chiavi sensibili)
+# Test files
+/coverage
+
+# Environment variables
 .env
-.env.local
 .env.*.local
 
-# File di cache/log/temporanei
+# OS and IDE specific
+.DS_Store
+Thumbs.db
+*.suo
+*.user
+*.bak
 *.log
-.DS_Store # macOS
-Thumbs.db # Windows
+.vscode/ # Uncomment this if you want to ignore VS Code settings
+.idea/   # IntelliJ/WebStorm
 
-# IDE e editor (es. VS Code)
-.vscode/ # Ignora la cartella di configurazione di VS Code (se non vuoi condividerla)
-.idea/   # IntelliJ / WebStorm
-
-# File specifici di Vite
-.vite/
+# GH-Pages cache (sometimes created if not ignored properly by the tool itself)
+.cache/

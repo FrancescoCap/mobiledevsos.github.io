@@ -41,7 +41,7 @@ const Header: React.FC = () => {
           <div className="flex-shrink-0">
             <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden shadow-2xl ring-8 ring-white/20 bg-gradient-to-br from-orange-400 to-orange-600">
               <img
-                src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600"
+                src="/asset/my_photo.jpeg"
                 alt="Francesco - Mobile Developer"
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
               />

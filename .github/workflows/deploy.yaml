@@ -3,10 +3,10 @@
 name: Deploy to GitHub Pages
 
 on:
-  # Lancia il workflow ogni volta che c'è un push sul branch 'main'
+  # Lancia il workflow ogni volta che c'è un push sul branch 'trunk'
   push:
     branches:
-      - main # O 'master' se il tuo branch principale si chiama così
+      - trunk # O 'master' se il tuo branch principale si chiama così
 
   # Permetti di lanciare il workflow manualmente dalla UI di GitHub Actions
   workflow_dispatch:
@@ -37,7 +37,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }} # Token fornito automaticamente da GitHub
           publish_dir: ./dist # La cartella da pubblicare (generata da 'npm run build')
           publish_branch: gh-pages # Il branch su cui pubblicare i file del sito
-          # Se preferisci pubblicare direttamente sul branch 'main' e servirlo da lì,
-          # imposta publish_branch: main e configura GitHub Pages per servire da 'main'
-          # ATTENZIONE: Se pubblichi su 'main', i file sorgente non saranno visibili
+          # Se preferisci pubblicare direttamente sul branch 'trunk' e servirlo da lì,
+          # imposta publish_branch: trunk e configura GitHub Pages per servire da 'trunk'
+          # ATTENZIONE: Se pubblichi su 'trunk', i file sorgente non saranno visibili
           # nel repository, solo i file della build.
